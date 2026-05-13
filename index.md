@@ -18,16 +18,16 @@ Populated and maintained by the agent via the ingest / promotion / reflection wo
 - (empty)
 
 ## Memory · Semantic · Entities
-- (empty)
+- [autostock.md](memory/semantic/entities/autostock.md) — 키움 API 자동매매 (stub) · importance 5
+- [mcp-supporter.md](memory/semantic/entities/mcp-supporter.md) — MCP Supporter 도메인 (stub) · importance 5
+- [syswidget.md](memory/semantic/entities/syswidget.md) — SysWidget 도메인 (stub) · importance 5
+- [maneo.md](memory/semantic/entities/maneo.md) — MANEO 데스크탑 펫 게임 (stub) · importance 5
+- [de-project1.md](memory/semantic/entities/de-project1.md) — 데이터엔지니어링 Project 1 (stub) · importance 5
+- [hangsung-drone.md](memory/semantic/entities/hangsung-drone.md) — HangsungDrone (stub) · importance 5
+- [mypersona.md](memory/semantic/entities/mypersona.md) — Mypersona 자체 (stub) · importance 5
 
 ## Memory · Semantic · Concepts
-- [autostock.md](memory/semantic/concepts/autostock.md) — 키움 API 자동매매 (stub) · importance 5
-- [mcp-supporter.md](memory/semantic/concepts/mcp-supporter.md) — MCP Supporter 도메인 (stub) · importance 5
-- [syswidget.md](memory/semantic/concepts/syswidget.md) — SysWidget 도메인 (stub) · importance 5
-- [maneo.md](memory/semantic/concepts/maneo.md) — MANEO 데스크탑 펫 게임 (stub) · importance 5
-- [de-project1.md](memory/semantic/concepts/de-project1.md) — 데이터엔지니어링 Project 1 (stub) · importance 5
-- [hangsung-drone.md](memory/semantic/concepts/hangsung-drone.md) — HangsungDrone (stub) · importance 5
-- [mypersona.md](memory/semantic/concepts/mypersona.md) — Mypersona 자체 (stub) · importance 5
+- (empty)
 
 ## Memory · Semantic · Synthesis
 - (empty)

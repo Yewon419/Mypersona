@@ -1,11 +1,13 @@
 ---
-type: semantic-concept
+type: semantic-entity
 created: 2026-05-13
 updated: 2026-05-13
 importance: 5
-tags: [domain, project]
+tags: [domain, project, self]
 entities: []
-canonical_name: "SysWidget"
+canonical_name: "Mypersona"
+aliases: []
+category: project
 related: []
 ---
 

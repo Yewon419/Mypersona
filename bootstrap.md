@@ -18,7 +18,7 @@ You are bootstrapping a fresh Mypersona instance. Your job:
    - **`consciousness/active_context.md`** — create as an empty stub (type `consciousness-active`, body: "(no active context yet — populated as work begins)").
    - **`subconscious/style.md`** — create from Q4. Voice, register, sentence rhythm, what the persona never says. Type `subconscious-style`.
    - **`subconscious/constraints.md`** — create from Q2 as a bulleted list of hard rules. Type `subconscious-constraints`.
-   - **`memory/semantic/concepts/<domain-slug>.md`** — one stub per Q5 domain. Frontmatter with `type: semantic-concept`, `importance: 5`, body: "(stub — to be filled as the persona learns)".
+   - **`memory/semantic/entities/<domain-slug>.md`** — one stub per Q5 domain. Frontmatter with `type: semantic-entity`, `category: project`, `aliases: []`, `importance: 5`, body: "(stub — to be filled as the persona learns)". (Domains the user names are concrete projects/work-areas — these are entities. Use `memory/semantic/concepts/` only for named abstractions like "scope-discipline".)
 4. Append one line to `log.md`: `YYYY-MM-DD | bootstrap | initial persona seeded (5-question setup complete)`.
 5. Update `index.md` to list every file you created.
 6. Tell the user: "Bootstrap complete." and suggest a commit + push.
@@ -60,7 +60,7 @@ Do not skip steps. Do not invent answers — if the user is brief, that's fine; 
 
 > *Ask:* "What topics will this persona accumulate memory around? Projects, work areas, personal interests — anywhere you expect a body of knowledge to grow. List 3 to 7."
 
-→ Fills `{{DOMAINS}}` (comma-separated) and stub files at `memory/semantic/concepts/<slug>.md`.
+→ Fills `{{DOMAINS}}` (comma-separated) and stub files at `memory/semantic/entities/<slug>.md`.
 
 ---
 
