@@ -2,7 +2,7 @@
 
 Auto-maintained catalog of all persona-wiki pages. One row per page: link + one-line summary + importance.
 
-Populated and maintained by the agent via the ingest / promotion / reflection workflows defined in `PERSONA.md` (forthcoming, Phase C).
+Populated and maintained by the agent via the ingest / promotion / reflection workflows defined in `PERSONA.md`.
 
 ---
 

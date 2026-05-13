@@ -68,7 +68,7 @@ This section is the **portable persona contract**. It is what other LLM hosts (C
 
 <!-- COMPACT END -->
 
-> If `{{slot}}` placeholders are still visible above, this is a fresh install. Run `bootstrap.md`.
+> If forking this repo, run `bootstrap.md` to fill the `{{slot}}` placeholders with your own persona.
 > ChatGPT Custom Instructions paste tip: split the COMPACT section at the `### Behavior contract` heading — "About this persona" → field 1 ("About you"), "Behavior contract" → field 2 ("How you should respond").
 
 ---
