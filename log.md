@@ -12,3 +12,4 @@ Event types: `init`, `ingest`, `promote`, `reflect`, `lint`, `schema-change`, `p
 2026-05-13 | phase-complete | Phase A2 — prior art audit (`research/prior_art_synthesis.md`)
 2026-05-13 | phase-complete | Phase B — directory scaffold + frontmatter schema
 2026-05-13 | phase-complete | Phase C1 — PERSONA.md (entry) + CLAUDE.md/AGENTS.md/.cursorrules redirects + bootstrap.md
+2026-05-13 | phase-complete | Phase C2 — docs/integrations/{chatgpt,claude,gemini,claude_code,url_fetch_addon}.md + root README.md
