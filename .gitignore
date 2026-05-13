@@ -1,0 +1,14 @@
+# Volatile per-session scratch — promoted to memory/ at session end
+working/*
+!working/README.md
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Future vector sidecar (regenerable, not source of truth)
+.index/
