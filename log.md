@@ -18,3 +18,5 @@ Event types: `init`, `ingest`, `promote`, `reflect`, `lint`, `schema-change`, `p
 2026-05-21 | ingest | hangsung-drone entity populated (stub → v0.3 락 정정 반영, importance 5→7)
 2026-05-21 | promote | episodic 2026-05-21-design-system-lock-flip (HangsungDrone design-system 락 풀 자체로 정정, importance 8)
 2026-05-21 | promote | procedural askuserquestion-korean-no-escape (한글 UTF-8 직접 입력 룰, importance 6, user-stated)
+2026-05-23 | promote | episodic 2026-05-23-autostock-frontend-design-unification (AutoStock 프론트엔드 14커밋 전체 디자인 통일, importance 8, post-hoc catch-up — 컨트랙트 위반 인지)
+2026-05-23 | ingest | autostock entity populated (stub → 디자인 시스템 통일 반영, importance 5→7)

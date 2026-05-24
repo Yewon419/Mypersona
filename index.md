@@ -16,9 +16,10 @@ Populated and maintained by the agent via the ingest / promotion / reflection wo
 
 ## Memory · Episodic
 - [2026-05-21-design-system-lock-flip.md](memory/episodic/2026-05-21-design-system-lock-flip.md) — HangsungDrone design-system 락 정정 (풀 자체) · importance 8
+- [2026-05-23-autostock-frontend-design-unification.md](memory/episodic/2026-05-23-autostock-frontend-design-unification.md) — AutoStock 프론트엔드 전체 디자인 통일 (터미널 HUD) · importance 8
 
 ## Memory · Semantic · Entities
-- [autostock.md](memory/semantic/entities/autostock.md) — 키움 API 자동매매 (stub) · importance 5
+- [autostock.md](memory/semantic/entities/autostock.md) — 키움 API 자동매매 + 디자인 시스템 통일 (2026-05-23) · importance 7
 - [mcp-supporter.md](memory/semantic/entities/mcp-supporter.md) — MCP Supporter 도메인 (stub) · importance 5
 - [syswidget.md](memory/semantic/entities/syswidget.md) — SysWidget 도메인 (stub) · importance 5
 - [maneo.md](memory/semantic/entities/maneo.md) — MANEO 데스크탑 펫 게임 (stub) · importance 5
