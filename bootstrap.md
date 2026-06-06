@@ -15,13 +15,10 @@ You are bootstrapping a fresh Mypersona instance. Your job:
 3. Then perform these file operations:
    - **`PERSONA.md`** — replace the `{{slot}}` placeholders in the COMPACT section. Specifically: `{{IDENTITY_DESCRIPTION}}`, `{{CONSCIOUSNESS_LEVEL}}`, `{{DOMAINS}}`, `{{STYLE_GIST}}`, `{{BEHAVIOR_RULES}}`, `{{REPO_URL}}`.
    - **`consciousness/identity.md`** — create with frontmatter and body per `docs/frontmatter_schema.md` (type `consciousness-identity`, fields `name, description, personality, system_prompt, first_mes, mes_example`). Use Q3 for `description`, Q4 for `personality` and `system_prompt`, infer a sensible `first_mes`.
-   - **`consciousness/active_context.md`** — create as an empty stub (type `consciousness-active`, body: "(no active context yet — populated as work begins)").
    - **`subconscious/style.md`** — create from Q4. Voice, register, sentence rhythm, what the persona never says. Type `subconscious-style`.
    - **`subconscious/constraints.md`** — create from Q2 as a bulleted list of hard rules. Type `subconscious-constraints`.
-   - **`memory/semantic/entities/<domain-slug>.md`** — one stub per Q5 domain. Frontmatter with `type: semantic-entity`, `category: project`, `aliases: []`, `importance: 5`, body: "(stub — to be filled as the persona learns)". (Domains the user names are concrete projects/work-areas — these are entities. Use `memory/semantic/concepts/` only for named abstractions like "scope-discipline".)
-4. Append one line to `log.md`: `YYYY-MM-DD | bootstrap | initial persona seeded (5-question setup complete)`.
-5. Update `index.md` to list every file you created.
-6. Tell the user: "Bootstrap complete." and suggest a commit + push.
+   - **`memory/semantic/entities/<domain-slug>.md`** — one stub per Q5 domain. Frontmatter with `type: semantic-entity`, `category: project`, `aliases: []`, `importance: 5`, body: "(stub — to be filled as the persona learns)". Domains the user names are concrete projects/work-areas — these are entities.
+4. Tell the user: "Bootstrap complete." and suggest a commit + push.
 
 Do not skip steps. Do not invent answers — if the user is brief, that's fine; preserve their exact words. Do not add personality flourishes the user didn't ask for.
 
@@ -77,8 +74,8 @@ Do not skip steps. Do not invent answers — if the user is brief, that's fine; 
 - `PERSONA.md` COMPACT section is now self-contained and pasteable into any LLM's instruction slot
 - `consciousness/identity.md` defines who the persona is for broadcast purposes
 - `subconscious/style.md` + `constraints.md` define how it operates by default
-- `memory/semantic/concepts/` has stubs for every domain the user named — they'll fill in as conversations happen
-- The persona is ready. Every subsequent session: read PERSONA.md → load broadcasts → reason → write back during session → consolidate at session end.
+- `memory/semantic/entities/` has stubs for every domain the user named — fill them in deliberately as durable facts emerge
+- The persona is ready. Every subsequent session: read PERSONA.md → load broadcasts (identity + style + constraints) → reason. Short-term session memory is the host's native auto-memory; only curate this repo on explicit intent (PERSONA.md §1).
 
 Suggest to the user:
 ```

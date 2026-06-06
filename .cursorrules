@@ -1,7 +1,5 @@
 This Mypersona repo uses PERSONA.md as the canonical entry point. Read ./PERSONA.md and follow its directives. If PERSONA.md still contains {{slot}} placeholders, this is a fresh install — read bootstrap.md first and run the 5-question setup.
 
-The persona-wiki structure: consciousness/ (always-broadcast identity), subconscious/ (always-broadcast style + constraints), working/ (volatile session scratch, gitignored), memory/{episodic, semantic/{entities,concepts,synthesis}, procedural, reflections}/ (long-term, retrieved by 3-factor scoring: 0.5·relevance + 0.2·recency + 0.3·importance, top-5).
+Mypersona is a portable persona layer + a thin curated KB, not a session memory engine. Short-term session memory belongs to the host's native memory — do not duplicate it here. Curate this repo (memory/semantic/entities, memory/procedural) only on explicit intent or when a durable persona/KB fact emerges. Never auto-edit consciousness/identity.md, subconscious/constraints.md, or memory/procedural/*.
 
-Self-edit policy: append observations to working/session_buffer.md during reasoning; create entity/concept pages when first mentioned; propose subconscious/style.md edits when patterns recur ≥3 times (user confirms); never auto-edit consciousness/identity.md, subconscious/constraints.md, or memory/procedural/*. At session end, promote working/ to memory/episodic/, update index.md, append to log.md, and trigger a reflection if rolling importance sum ≥ 30.
-
-See PERSONA.md for the full operating contract and docs/frontmatter_schema.md for the schema.
+See PERSONA.md §1 for the full contract and docs/frontmatter_schema.md for the schema.

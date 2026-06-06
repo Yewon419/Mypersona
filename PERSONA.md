@@ -64,21 +64,19 @@ This section is the **portable persona contract**. It is what other LLM hosts (C
 ## 3. Directory layer
 
 ```
-consciousness/    — always broadcast: identity (persona core)
-subconscious/     — always broadcast, low salience (style, constraints)
+consciousness/identity.md       — always broadcast: persona core
+subconscious/{style,constraints}.md — always broadcast: voice + hard rules
 memory/
-├── episodic/     — curated events worth keeping in the portable layer (dated)
-├── semantic/
-│   ├── entities/   — people, organizations, projects, tools
-│   ├── concepts/   — ideas, frameworks, methodologies
-│   └── synthesis/  — (inactive) cross-cutting synthesis — host auto-memory's job
-├── procedural/   — explicit, user-stated workflows & rules
-└── reflections/  — (inactive) derived inferences — host auto-memory's job
-working/          — (deprecated) session scratch; native auto-memory owns this now
-consciousness/active_context.md — (stub) short-term focus moved to native auto-memory
+├── semantic/entities/  — curated KB pages (projects/tools/people the persona keeps on purpose)
+├── procedural/         — explicit, user-stated portable rules
+└── episodic/           — static archive of past milestones (no new writes; host owns session memory)
+docs/
+├── frontmatter_schema.md   — the page schema
+└── integrations/           — how to paste this persona into ChatGPT / Claude / Gemini
+research/                    — design rationale archive (why it's built this way)
 ```
 
-Each populated folder has a `README.md` defining what does / does not belong there. `docs/frontmatter_schema.md` is the full schema. `synthesis/`, `reflections/`, and `working/` are intentionally inactive under the role-split (§1) — the host's native background consolidation covers that ground.
+`docs/frontmatter_schema.md` is the page schema. The tree is deliberately flat — the self-growing wiki layers (working scratch, reflections, synthesis, concepts, index/log bookkeeping) were removed when short-term memory moved to native host auto-memory (§1). See `research/prior_art_synthesis.md §6`.
 
 ---
 

@@ -4,7 +4,7 @@ created: 2026-05-13
 updated: 2026-05-21
 importance: 7
 tags: [domain, project, hardware, b2b, drone-show]
-entities: ["[[mypersona]]"]
+entities: []
 canonical_name: "HangsungDrone"
 aliases: ["실내 B2B 드론쇼", "한성드론"]
 category: project
