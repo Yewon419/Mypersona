@@ -1,4 +1,13 @@
-# memory/reflections/
+# memory/reflections/ — INACTIVE (2026-06-06)
+
+> **Inactive under the role-split** (PERSONA.md §1). Auto-derived reflection is now the
+> host's native background pass (Claude Code *Auto Dream* / Letta *sleeptime*), which does
+> it automatically and better. Mypersona does not run its own reflection trigger.
+> Additionally, faulty-memory research (`research/prior_art_synthesis.md §6`) found
+> aggressive consolidation/rewrite *corrupts* memory — curated raw episodic beats it.
+> The spec below is retained for historical reference only.
+
+---
 
 Higher-level inferences auto-derived from clusters of episodic and semantic pages. **What the persona now believes / notices, given accumulated experience.**
 

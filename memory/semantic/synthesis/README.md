@@ -1,4 +1,11 @@
-# memory/semantic/synthesis/
+# memory/semantic/synthesis/ — INACTIVE (2026-06-06)
+
+> **Inactive under the role-split** (PERSONA.md §1). Cross-cutting synthesis filed from
+> conversation is now the host's native auto-memory job. Mypersona does not auto-file
+> synthesis pages. A synthesis is only added here if the user explicitly asks to keep one
+> in the portable layer. The spec below is retained for reference.
+
+---
 
 Derived comparisons, cross-cutting analyses, insights produced by querying the wiki. **The output of thinking, filed back.**
 

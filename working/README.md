@@ -1,4 +1,13 @@
-# working/
+# working/ — DEPRECATED (2026-06-06)
+
+> **Inactive under the role-split** (PERSONA.md §1). Short-term session memory now
+> belongs to the host's native auto-memory (Claude Code `~/.claude/.../memory/`), which
+> runs an automatic background consolidation pass. The agent **no longer maintains
+> `session_buffer.md`** and no longer promotes from it. Past contents were archived to
+> `memory/episodic/2026-05-23_2026-05-30-session-archive.md`. The rules below describe
+> the retired contract, kept for historical reference only.
+
+---
 
 **Per-session volatile scratch.** Gitignored. Baddeley's episodic buffer analogue + Letta's Recall Memory pre-promotion area.
 

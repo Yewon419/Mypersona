@@ -8,7 +8,7 @@ Populated and maintained by the agent via the ingest / promotion / reflection wo
 
 ## Consciousness
 - [identity.md](consciousness/identity.md) — 페르소나 정체성 (broadcast layer) · importance 9
-- [active_context.md](consciousness/active_context.md) — 현재 활성 컨텍스트 (stub) · importance 5
+- [active_context.md](consciousness/active_context.md) — (stub, deprecated) 단기 컨텍스트는 네이티브 auto-memory로 이관 · importance 2
 
 ## Subconscious
 - [style.md](subconscious/style.md) — 보이스·레지스터·금지 표현 · importance 8
@@ -17,6 +17,7 @@ Populated and maintained by the agent via the ingest / promotion / reflection wo
 ## Memory · Episodic
 - [2026-05-21-design-system-lock-flip.md](memory/episodic/2026-05-21-design-system-lock-flip.md) — HangsungDrone design-system 락 정정 (풀 자체) · importance 8
 - [2026-05-23-autostock-frontend-design-unification.md](memory/episodic/2026-05-23-autostock-frontend-design-unification.md) — AutoStock 프론트엔드 전체 디자인 통일 (터미널 HUD) · importance 8
+- [2026-05-23_2026-05-30-session-archive.md](memory/episodic/2026-05-23_2026-05-30-session-archive.md) — 구 session_buffer 원본 아카이브 (정사는 네이티브 auto-memory) · importance 4
 
 ## Memory · Semantic · Entities
 - [autostock.md](memory/semantic/entities/autostock.md) — 키움 API 자동매매 + 디자인 시스템 통일 (2026-05-23) · importance 7
@@ -31,10 +32,10 @@ Populated and maintained by the agent via the ingest / promotion / reflection wo
 - (empty)
 
 ## Memory · Semantic · Synthesis
-- (empty)
+- (inactive — 호스트 네이티브 auto-memory 담당, PERSONA.md §1)
 
 ## Memory · Procedural
 - [askuserquestion-korean-no-escape.md](memory/procedural/askuserquestion-korean-no-escape.md) — AskUserQuestion 한글은 UTF-8 직접 입력 · importance 6
 
 ## Memory · Reflections
-- (empty)
+- (inactive — 호스트 네이티브 auto-memory(Auto Dream/sleeptime) 담당, PERSONA.md §1)

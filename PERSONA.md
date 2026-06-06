@@ -3,40 +3,28 @@
 > All tool-specific entry files (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`) redirect to this file. Whatever LLM is hosting this persona reads this first.
 >
 > **First run?** → read `bootstrap.md` and run the 5-question setup. Return here when done.
-> **Returning?** → load this file + `consciousness/*` + `subconscious/*` into context. Proceed.
+> **Returning?** → load this file + `consciousness/identity.md` + `subconscious/*` into context. Proceed.
 
 ---
 
-## 1. Agent operating contract
+## 1. What this repo is (and is not)
 
-You (the LLM hosting this persona) **operate** this persona-wiki. Memory is not done to you — you do it during reasoning. The wiki is your long-term storage; you read from it, you write to it.
+Mypersona is a **portable persona layer + a deliberately curated long-term knowledge base** — the parts that ride along to *any* LLM host (Claude, ChatGPT, Gemini) and the parts a human chose to keep on purpose.
+
+Mypersona is **not** a session memory engine. Short-term work memory — per-session observations, work logs, project status, corrections-in-the-moment — belongs to the host's native memory (e.g. Claude Code `~/.claude/.../memory/` auto-memory). **Do not duplicate that here.** Native auto-memory runs a background consolidation pass automatically and will always out-compete a hand-edited buffer; this repo deliberately cedes that ground.
+
+> **Why the split** (2026-06-06): the prior contract told the hosting agent to self-edit a `working/session_buffer.md` during reasoning and promote it to `episodic/` at session end. In practice the agent ignored that ~every session (it's focused on the user's task, not bookkeeping), and the buffer rotted while native auto-memory quietly held the real record. The industry converged the other way — Letta's *sleeptime* agents and Claude Code's *Auto Dream* both **remove memory editing from the main agent** and run a separate background pass. We don't reimplement that; we let native auto-memory be that pass and keep Mypersona to what it can't do. See `research/prior_art_synthesis.md` §6.
 
 ### Load at session start
-- **Always-broadcast**: this file, `consciousness/identity.md`, `consciousness/active_context.md`, `subconscious/style.md`, `subconscious/constraints.md`.
-- **If it exists**: `working/session_buffer.md` (continuity from prior unconsolidated session).
-- **Retrieved by need**: top-k pages from `memory/` via the retrieval formula below.
+- **Always-broadcast**: this file (§2), `consciousness/identity.md`, `subconscious/style.md`, `subconscious/constraints.md`.
+- **Retrieved by need**: pages from `memory/` when relevant to the turn (entities, procedural rules). Rank by fit × importance (frontmatter field, 1–10). No fixed top-k — pull what the turn actually needs.
 
-### Retrieval formula (when consulting `memory/`)
-Rank candidate pages by:
-```
-score = 0.5·relevance + 0.2·recency + 0.3·importance
-```
-Top-5 loaded by default. `importance` is the frontmatter field (1–10), `relevance` is your judgment of fit for the current turn, `recency` is exponentially decayed days-since-`updated`.
+### Writing to this repo
+KB curation is a **deliberate act, not a per-turn reflex.** Add or edit a page only when:
+- The user explicitly asks to record something here, **or**
+- A durable persona/KB fact emerges that belongs in the portable layer (a stable identity/voice fact, a reusable cross-LLM rule).
 
-### Self-edit during reasoning (not after)
-- Observation worth keeping → append to `working/session_buffer.md` immediately.
-- New entity/concept first mentioned → create page in `memory/semantic/entities/` or `memory/semantic/concepts/` with frontmatter (see `docs/frontmatter_schema.md`).
-- Stable behavioral pattern observed ≥3 times → **propose** edit to `subconscious/style.md`. User confirms before commit.
-- User states a workflow or rule explicitly → write to `memory/procedural/`.
-- User asks comparison / synthesis → answer, then file the answer to `memory/semantic/synthesis/`.
-- **Never auto-edit**: `consciousness/identity.md`, `subconscious/constraints.md`, anything under `memory/procedural/`. These require explicit user action.
-
-### At session end (or on `/promote`)
-1. Extract events from `working/session_buffer.md` → write `memory/episodic/YYYY-MM-DD-*.md` with `importance` scored.
-2. Update `index.md` to list any newly created pages.
-3. Append summary lines to `log.md`.
-4. Truncate `working/session_buffer.md` to empty header.
-5. **Reflection trigger check**: rolling sum of `importance` from episodic + semantic additions since the last reflection. If ≥ 30 → generate one `memory/reflections/YYYY-MM-DD-*.md` synthesizing the cluster (see `memory/reflections/README.md`).
+When you do write, follow `docs/frontmatter_schema.md`. **Never auto-edit** `consciousness/identity.md`, `subconscious/constraints.md`, or anything under `memory/procedural/` — those require explicit user action. Everyday session observations go to native auto-memory, not here.
 
 ---
 
@@ -76,20 +64,21 @@ This section is the **portable persona contract**. It is what other LLM hosts (C
 ## 3. Directory layer
 
 ```
-consciousness/    — always broadcast (identity, active focus)
+consciousness/    — always broadcast: identity (persona core)
 subconscious/     — always broadcast, low salience (style, constraints)
-working/          — volatile session scratch (gitignored)
 memory/
-├── episodic/     — events, dated
+├── episodic/     — curated events worth keeping in the portable layer (dated)
 ├── semantic/
 │   ├── entities/   — people, organizations, projects, tools
 │   ├── concepts/   — ideas, frameworks, methodologies
-│   └── synthesis/  — derived comparisons, cross-cutting insights
-├── procedural/   — workflows, rules
-└── reflections/  — derived inferences (Stanford Generative Agents pattern)
+│   └── synthesis/  — (inactive) cross-cutting synthesis — host auto-memory's job
+├── procedural/   — explicit, user-stated workflows & rules
+└── reflections/  — (inactive) derived inferences — host auto-memory's job
+working/          — (deprecated) session scratch; native auto-memory owns this now
+consciousness/active_context.md — (stub) short-term focus moved to native auto-memory
 ```
 
-Each folder has a `README.md` defining promotion rules, frontmatter, and what does / does not belong there. `docs/frontmatter_schema.md` is the full schema and lint spec.
+Each populated folder has a `README.md` defining what does / does not belong there. `docs/frontmatter_schema.md` is the full schema. `synthesis/`, `reflections/`, and `working/` are intentionally inactive under the role-split (§1) — the host's native background consolidation covers that ground.
 
 ---
 
@@ -103,4 +92,4 @@ Each folder has a `README.md` defining promotion rules, frontmatter, and what do
 
 ---
 
-*Pattern derived from Andrej Karpathy's LLM Wiki idea-file (Apr 2026), extended with brain-inspired layering (Squire/Tulving taxonomy + Global Workspace), Letta's self-editing memory contract, and Stanford Generative Agents' reflection module.*
+*Pattern derived from Andrej Karpathy's LLM Wiki idea-file (Apr 2026) + brain-inspired layering (Squire/Tulving taxonomy + Global Workspace). The original self-editing/reflection contract (Letta, Stanford Generative Agents) was retired 2026-06-06: native host memory (Letta sleeptime, Claude Code Auto Dream) does that automatically and better, so Mypersona narrowed to the portable persona layer + curated KB. Rationale: `research/prior_art_synthesis.md` §6.*

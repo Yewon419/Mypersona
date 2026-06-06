@@ -20,3 +20,6 @@ Event types: `init`, `ingest`, `promote`, `reflect`, `lint`, `schema-change`, `p
 2026-05-21 | promote | procedural askuserquestion-korean-no-escape (한글 UTF-8 직접 입력 룰, importance 6, user-stated)
 2026-05-23 | promote | episodic 2026-05-23-autostock-frontend-design-unification (AutoStock 프론트엔드 14커밋 전체 디자인 통일, importance 8, post-hoc catch-up — 컨트랙트 위반 인지)
 2026-05-23 | ingest | autostock entity populated (stub → 디자인 시스템 통일 반영, importance 5→7)
+2026-06-06 | schema-change | 역할 분할 (role-split) — PERSONA.md §1 재작성: self-edit/reflection 컨트랙트 은퇴, 단기 작업메모리를 호스트 네이티브 auto-memory에 양보. Mypersona = 휴대용 persona 레이어 + 큐레이션 KB. 근거: prior_art_synthesis.md §6 (Letta sleeptime / Claude Code Auto Dream / faulty-memory)
+2026-06-06 | promote | episodic 2026-05-23_2026-05-30-session-archive (구 session_buffer 460줄 원본 보존, lossy rewrite 금지 — faulty-memory 교훈, importance 4)
+2026-06-06 | schema-change | working/·active_context·synthesis/·reflections/ inactive 처리. 글로벌 Stop/UserPromptSubmit buffer hook 제거 + 고아 .ps1 2개 삭제. SessionStart hook은 active_context 로드만 제외하고 유지

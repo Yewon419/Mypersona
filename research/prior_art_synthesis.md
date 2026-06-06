@@ -172,6 +172,41 @@ source: episodic/YYYY-MM-DD-foo.md  # for reflections, what they were derived fr
 
 ---
 
+## 6. 2026-06-06 revision — the operating contract was wrong, and native memory ate our lunch
+
+> Phase A2 (above, §1–5) audited the **architecture** — folder structure, retrieval, what to add. It was right about all of that. What it got wrong was the **operating contract**: who does the writing, and when. After ~3 weeks of real use the failure was unambiguous, so the §1 contract was retired. This section records why, from a fresh look at how the field handles the same problem.
+
+### 6.1 What actually failed
+
+The original PERSONA.md §1 told the hosting agent to **self-edit during reasoning**: append every observation to `working/session_buffer.md`, promote to `episodic/` at session end, fire a reflection at importance≥30. In practice:
+
+- The agent ignored the per-turn append ~every session — it's focused on the user's task, not bookkeeping. The buffer logged its own nudge-ignore pattern 6+ times before anyone acted on it.
+- The buffer grew to 460+ lines spanning 5/23–5/30, **never once promoted** to episodic. git froze at 5/23.
+- Meanwhile Claude Code's **native auto-memory** (`~/.claude/.../memory/MEMORY.md` + `project_*.md`) quietly held the real, current record — it had the 6/01 DE-project2 pivot the Mypersona buffer never even saw. Two memory systems, diverged, and the automatic one won every time.
+
+### 6.2 What the field converged on (the opposite of our §1)
+
+- **Letta sleeptime agents** — consolidation is a **separate background agent**, not the main one. Best practice #1 is literally *"remove memory tools from the primary agent entirely"*; the primary logs raw, a background `sleeptime` agent (with a `memory_rethink` tool the primary lacks) consolidates/dedupes/prunes asynchronously on per-session / weekly / monthly cadences.
+- **Claude Code Auto Dream** — same shape, native: background consolidation triggered by *24h elapsed + 5 sessions*, keeps the `MEMORY.md` index under ~200 lines, converts relative dates to absolute, deletes contradicted facts, merges duplicates. Ran 913 sessions in ~8–9 min in one reported case.
+- **faulty-memory research** — the consolidation *rewrite step* is where corruption happens: streaming ground-truth through a consolidation loop made GPT-5.4 fail 54% of problems it had solved with zero memory. An *episodic-only* agent that retains/deletes **curated raw evidence** with abstraction disabled beats every consolidator tested.
+
+Three independent sources, one conclusion: **don't make the main agent self-edit, and don't aggressively rewrite.** Our §1 did both.
+
+### 6.3 Decision — role-split (not reimplement)
+
+We are not building our own sleeptime/dream agent. The host already has one (native auto-memory) and it's better than anything hand-rolled here. So Mypersona **cedes short-term work memory entirely** and narrows to what native memory can't do:
+
+1. **Portable persona layer** — identity / voice / constraints that ride to *any* LLM host (the one thing native, host-locked auto-memory cannot provide).
+2. **Deliberately curated long-term KB** — added on explicit intent, not per-turn reflex.
+
+Concrete changes (this revision): PERSONA.md §1 rewritten; `working/`, `consciousness/active_context.md`, `synthesis/`, `reflections/` marked inactive; the Stop/UserPromptSubmit buffer hooks removed from `~/.claude/settings.json`; the 460-line buffer archived raw to `memory/episodic/2026-05-23_2026-05-30-session-archive.md` (no lossy rewrite, per §6.2).
+
+### 6.4 Where this leaves §3.2's "what's missing"
+
+§3.2 said the must-adds were Reflection, importance scoring, 3-factor retrieval, and the self-edit contract. Post-revision: **Reflection and the self-edit contract are deleted as Mypersona responsibilities** (host owns them). Importance scoring stays (cheap, useful for curated-KB retrieval). 3-factor retrieval is simplified to fit × importance — recency matters less for a deliberately curated layer than for a session log.
+
+---
+
 ## Sources
 
 - Park et al., *Generative Agents: Interactive Simulacra of Human Behavior* (2023). https://arxiv.org/abs/2304.03442
@@ -181,3 +216,8 @@ source: episodic/YYYY-MM-DD-foo.md  # for reflections, what they were derived fr
 - NicholasSpisak/second-brain — https://github.com/NicholasSpisak/second-brain
 - Jason-Cyr/ai-shared-brain — https://github.com/Jason-Cyr/ai-shared-brain
 - Copana (personal AI in markdown) — https://copana.ai/
+- Letta — *Sleep-time Compute* — https://www.letta.com/blog/sleep-time-compute
+- Letta forum — *Sleeptime Agents for Memory Consolidation: Best Practices* — https://forum.letta.com/t/sleeptime-agents-for-memory-consolidation-best-practices-guide/154
+- Claude Code memory docs — https://code.claude.com/docs/en/memory
+- *Auto Memory and Auto Dream: how Claude Code learns and consolidates its memory* — https://antoniocortes.com/en/2026/03/30/auto-memory-and-auto-dream-how-claude-code-learns-and-consolidates-its-memory/
+- *Useful Memories Become Faulty When Continuously Updated by LLMs* — https://dylanzsz.github.io/faulty-memory/
